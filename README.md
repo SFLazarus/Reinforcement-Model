@@ -12,17 +12,26 @@ Built a Q-learning model to solve a maze while collecting treasure and reaching 
 7. Commit your source code, documentation and other supporting files to the git repository in GitHub
 
 # Environment
-Labels:::>
+    Labels:::>
+    Opponent: '_E_'
+    Treasure: '_$_'
+    OBSTACLE: '|-|'
+    Empty space: '---'
 
-Opponent: '_E_'
-Treasure: '_$_'
-OBSTACLE: '|-|'
-Empty space: '---'
+    ['---', '---', '---', '---', '_$_', '_E_', '|-|']
+    ['_$_', '_E_', '---', '---', '---', '---', '_E_']
+    ['---', '---', '_$_', '---', '|-|', '---', '---']
+    ['---', '---', '_E_', '---', '|-|', '---', '---']
+    ['---', '_$_', '---', '---', '|-|', '---', '---']
+    ['---', '---', '---', '_$_', '|-|', '---', '---']
+    ['---', '---', '---', '---', '---', '---', 'END']
 
-- ['---', '---', '---', '---', '_$_', '_E_', '|-|']
-- ['_$_', '_E_', '---', '---', '---', '---', '_E_']
-- ['---', '---', '_$_', '---', '|-|', '---', '---']
-- ['---', '---', '_E_', '---', '|-|', '---', '---']
-- ['---', '_$_', '---', '---', '|-|', '---', '---']
-- ['---', '---', '---', '_$_', '|-|', '---', '---']
-- ['---', '---', '---', '---', '---', '---', 'END']
+# Strategy 1:
+
+## Rewards
+
+- Let us punish with -5, if agent encounters its opponent
+- Let us punish with -3, if agent crashes into obstacle
+- Let us reward with 1, if agent finds treasure
+- Let us reward with 100, if agent reaches goal state
+- Let us not motivate our model to finish quick by not punishing for each step, i.e., we give 0 reward for every step
